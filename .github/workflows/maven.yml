@@ -1,11 +1,12 @@
 # This workflow will build a Java project with Maven
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
 
+
 name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
 
 jobs:
   build:
@@ -22,3 +23,7 @@ jobs:
       run: mvn -B package --file resource_server/pom.xml
     - name: Build Authorization Server With Maven
       run: mvn -B package --file authorization_server/pom.xml
+    - name: Put me inside the directory
+      run: cd client
+    - name: Run the app
+      run: ng serve
